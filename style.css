@@ -1,0 +1,1037 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(0,0,50,0.85) 40%, rgba(0,100,200,0.7));
+  color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header fijo con sombra */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 50, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  padding: 1rem;
+}
+
+nav a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.05rem;
+  position: relative;
+  padding: 0.2rem 0;
+  transition: color 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #00aaff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+nav a:hover {
+  color: #00aaff;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+main.inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url('slider1.jpg') center/cover fixed no-repeat;
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0,170,255,0.5));
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #00aaff;
+  text-shadow: 0 0 5px rgba(0,170,255,0.5);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0,0,0,0.6);
+  font-size: 0.9rem;
+  color: #ccc;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.6);
+}
+
+.producto {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  transition: transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.producto:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+.producto img {
+  width: 110px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,170,255,0.4);
+}
+
+.producto button {
+  background: linear-gradient(145deg, #007acc, #00aaff);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+.producto button:hover {
+  background: linear-gradient(145deg, #00aaff, #007acc);
+  transform: scale(1.05);
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+a img {
+  vertical-align: middle;
+}
+
+ul#lista-carrito {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+p, h2 {
+  color: #f0f0f0;
+}
+
+button {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .producto {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.slider {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+body {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .producto {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slider {
+    height: 200px;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .producto img {
+    width: 90px;
+  }
+
+  .producto button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+footer .social {
+  margin-bottom: 0.5rem;
+}
+
+footer .social a {
+  color: #00aaff;
+  margin: 0 0.5rem;
+  font-size: 1.4rem;
+  transition: color 0.3s;
+}
+
+footer .social a:hover {
+  color: #fff;
+}
+
+footer .redes {
+  margin-bottom: 0.5rem;
+}
+
+footer .redes a {
+  color: #00aaff;
+  margin: 0 0.5rem;
+  font-size: 1.4rem;
+  transition: color 0.3s;
+}
+
+footer .redes a:hover {
+  color: #fff;
+}
+
+
+.slider img.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.slider img {
+  transition: opacity 1s ease-in-out, transform 10s linear;
+}
+
+#buscador {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  outline: none;
+}
+
+#btnCarrito {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(145deg, #007acc, #00aaff);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 999;
+  transition: transform 0.2s, background 0.3s;
+}
+
+#btnCarrito:hover {
+  transform: scale(1.1);
+  background: linear-gradient(145deg, #00aaff, #007acc);
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+/* Modal */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: rgba(0,0,50,0.9);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  animation: fadeInModal 0.5s;
+}
+
+.modal-img {
+  width: 200px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #00aaff;
+}
+
+.modal button {
+  background: linear-gradient(145deg, #007acc, #00aaff);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.8);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+#categorias {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#categorias button {
+  background: rgba(0,0,50,0.7);
+  color: #fff;
+  border: none;
+  margin: 0.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#categorias button:hover {
+  background: #00aaff;
+  transform: scale(1.05);
+}
+
+button:hover, #btnCarrito:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease, background 0.3s;
+}
+
+.producto {
+  transition: transform 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+}
+
+#modalBtn:hover {
+  background: #0099cc;
+}
+
+/* Carrito bonito */
+.lista-carrito {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,50,0.6);
+  border-radius: 12px;
+  padding: 1rem;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.carrito-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px #00aaff;
+}
+
+.total-container {
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.2rem;
+  color: #00aaff;
+}
+
+.acciones-carrito {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.acciones-carrito button {
+  background: linear-gradient(145deg, #007acc, #00aaff);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.acciones-carrito button:hover {
+  transform: scale(1.05);
+  background: #0099cc;
+}
+
+.modal-pago {
+  display: none; /* oculto al inicio */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-contenido {
+  background: #001d3d;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+}
+
+.modal-contenido h3 {
+  margin-bottom: 1rem;
+}
+
+.modal-contenido button {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  background: #00aaff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-contenido button:hover {
+  background: #0099cc;
+}
+
+.modal-contenido button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  background: #00aaff;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-contenido button:hover {
+  background: #0099cc;
+}
+
+.logo-banco {
+  width: 24px;
+  height: auto;
+}
+
+/* Blur fondo cuando el modal está activo */
+body.modal-abierto main,
+body.modal-abierto header,
+body.modal-abierto footer {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+.modal-contenido input, .modal-contenido select {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+}
+
+.qr-imagen {
+  width: 150px;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
+#btn-factura {
+  background: #00aaff;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#btn-factura:hover {
+  background: #0099cc;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, #000000, #001f33);
+  color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+header nav ul li {
+  margin: 0 1rem;
+}
+
+header nav ul li a {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #66d9ff;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  margin: 1.5rem 0;
+  font-size: 2rem;
+}
+
+/* Lista carrito */
+.lista-carrito {
+  max-width: 800px;
+  margin: auto;
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.lista-carrito li {
+  margin: 0.5rem 0;
+}
+
+/* Total */
+.total-container {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Botones */
+.acciones-carrito {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.acciones-carrito button,
+#factura-digital button {
+  background: #00aaff;
+  border: none;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.acciones-carrito button:hover,
+#factura-digital button:hover {
+  background: #66d9ff;
+  transform: scale(1.05);
+}
+
+/* Factura digital */
+#factura-digital {
+  max-width: 600px;
+  margin: 1rem auto;
+  background: rgba(0,0,0,0.6);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 15px rgba(0,170,255,0.3);
+}
+
+#factura-digital input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid #00aaff;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+#detalle-productos ul {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+#detalle-productos li {
+  margin: 0.3rem 0;
+}
+
+/* QR */
+#qr-nequi {
+  text-align: center;
+}
+
+#qr-nequi img {
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,170,255,0.4);
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0,0,0,0.8);
+  font-size: 0.9rem;
+}
+
+footer .social {
+  margin-bottom: 0.5rem;
+}
+
+footer .social a {
+  color: #00aaff;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+footer .social a:hover {
+  color: #66d9ff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .acciones-carrito {
+    flex-direction: column;
+  }
+
+  header nav ul {
+    flex-direction: column;
+  }
+
+  header nav ul li {
+    margin: 0.5rem 0;
+  }
+}
+
+/* Animación entrada */
+.fade-slide-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s forwards;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#detalle-productos li,
+.lista-carrito li {
+  padding: 0.4rem;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#detalle-productos li:hover,
+.lista-carrito li:hover {
+  background: rgba(0, 170, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.lista-carrito,
+#factura-digital {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px) brightness(1.1);
+  -webkit-backdrop-filter: blur(12px) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Reflejo superior */
+.lista-carrito::before,
+#factura-digital::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%);
+  transform: rotate(0deg);
+  animation: reflejoAnimado 6s linear infinite;
+}
+
+@keyframes reflejoAnimado {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.acciones-carrito button,
+#factura-digital button {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+}
+
+/* Animación de entrada */
+.fade-slide-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s forwards;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación suave de entrada */
+.fade-slide-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s forwards ease-out;
+}
+
+/* Animación escalonada de elementos */
+.fade-slide-item {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlideItem 0.8s forwards ease-out;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideItem {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación especial QR */
+.qr-anim {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: qrAppear 0.8s forwards ease-out;
+}
+
+@keyframes qrAppear {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Brillo suave al pasar el mouse */
+.acciones-carrito button,
+#factura-digital button {
+  position: relative;
+  overflow: hidden;
+}
+
+.acciones-carrito button::after,
+#factura-digital button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-25deg);
+  transition: left 0.5s;
+}
+
+.acciones-carrito button:hover::after,
+#factura-digital button:hover::after {
+  left: 125%;
+}
+
+/* Vibración muy suave al hacer clic */
+.acciones-carrito button:active,
+#factura-digital button:active {
+  animation: vibrar 0.2s linear;
+}
+
+@keyframes vibrar {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+/* Efecto 3D: botón se levanta y rota un poco */
+.acciones-carrito button,
+#factura-digital button {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.acciones-carrito button:hover,
+#factura-digital button:hover {
+  transform: translateY(-3px) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0 10px 20px rgba(0,170,255,0.4);
+}
+
+.acciones-carrito button,
+#factura-digital button {
+  background: linear-gradient(270deg, #00aaff, #005577, #00aaff);
+  background-size: 400% 400%;
+  animation: gradienteAnimado 6s ease infinite;
+  color: white;
+}
+
+@keyframes gradienteAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.acciones-carrito button,
+#factura-digital button {
+  animation: gradienteAnimado 6s ease infinite, brilloPulsante 2s ease-in-out infinite;
+}
+
+@keyframes brilloPulsante {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+h1, h2, h3 {
+  color: #00aaff;
+  text-shadow: 0 0 10px rgba(0,170,255,0.7);
+  animation: textoBrilla 2s ease-in-out infinite;
+}
+
+@keyframes textoBrilla {
+  0%, 100% { text-shadow: 0 0 10px rgba(0,170,255,0.7); }
+  50% { text-shadow: 0 0 20px rgba(0,170,255,1); }
+}
+
+#direccion-envio {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  outline: none;
+  margin-bottom: 1rem;
+}
+#direccion-envio::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.modal-exito {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+
+.modal-exito-contenido {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #00aaff;
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.modal-exito-contenido h2 {
+  margin-bottom: 0.5rem;
+}
+
+.modal-exito-contenido button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(270deg, #00aaff, #005577, #00aaff);
+  background-size: 400% 400%;
+  animation: gradienteAnimado 6s ease infinite, brilloPulsante 2s ease-in-out infinite;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.botones-factura {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;   /* separa los botones */
+  margin-top: 1rem;
+}
+
+.botones-factura button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(270deg, #00aaff, #005577, #00aaff);
+  background-size: 400% 400%;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  animation: gradienteAnimado 6s ease infinite, brilloPulsante 2s ease-in-out infinite;
+}

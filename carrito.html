@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito - 3C SPIRIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <nav  av>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+      <li><a href="ubicacion.html">Ubicación</a></li>
+      <li><a href="contacto.html">Contáctanos</a></li>
+      <li><a href="historial.html">Historial de compras</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="fade-slide-in">
+  <h1>🛒 Carrito de compras</h1>
+  
+  <div id="lista-carrito" class="lista-carrito"></div>
+  <div class="total-container">
+    <h2>Total: $<span id="total">0</span></h2>
+  </div>
+
+  <div class="acciones-carrito">
+    <button onclick="vaciarCarrito()"><i class="fas fa-trash"></i> Vaciar carrito</button>
+    <button onclick="abrirFactura()"><i class="fas fa-file-invoice"></i> Continuar con el pago</button>
+  </div>
+
+  <!-- Factura digital -->
+<div id="factura-digital" style="display:none; padding:1rem; border:2px solid #007bff; margin-top:1rem; border-radius:10px;">
+  <h3>Factura digital - 3C SPIRIT</h3>
+  
+  <label for="direccion-envio">Dirección de envío:</label><br>
+  <input type="text" id="direccion-envio" placeholder="Escribe tu dirección de envío"><br><br>
+
+  <div id="detalle-productos"></div>
+
+  <p style="font-weight:bold;">Total: $<span id="total-final"></span></p>
+
+  <button onclick="mostrarQR()">Escanear QR para pago por Nequi</button>
+  <button onclick="cancelarPedido()">Cancelar pedido</button>
+
+  <div id="qr-nequi" style="display:none; margin-top:1rem;">
+    <p>Escanea este QR para pagar por Nequi:</p>
+    <img src="qr-nequi.jpeg" alt="QR Nequi" style="width:180px;">
+  </div>
+</div>
+
+  <div id="modal-exito" class="modal-exito" style="display:none;">
+  <div class="modal-exito-contenido">
+    <h2>✅ ¡Pago realizado correctamente!</h2>
+    <p>Gracias por tu compra. Pronto recibirás tu pedido en la dirección indicada.</p>
+    <button onclick="cerrarModalExito()">Cerrar</button>
+  </div>
+</div>
+
+</main>
+
+<footer class="fade-slide-in">
+  <div class="social">
+    <a href="https://facebook.com/cristhiancamilo.caicedorangel" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/cristhiancamilo.caicedorangel" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/573143603309" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  &copy; 2025 3C SPIRIT. Todos los derechos reservados. Colombia.
+</footer>
+
+<!-- Partículas -->
+<div id="particles-js"></div>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS('particles-js',{
+  "particles": {
+    "number": { "value": 50 },
+    "color": { "value": "#00aaff" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.4 },
+    "size": { "value": 3 },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#00aaff",
+      "opacity": 0.3,
+      "width": 1
+    },
+    "move": { "enable": true, "speed": 2 }
+  }
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <meta charset="UTF-8">
+  <title>Productos - 3C SPIRIT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+        <li><a href="historial.html">Historial de compras</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<main>
+  <h1>Nuestros Productos</h1>
+  <div id="categorias">
+  <button onclick="filtrarCategoria('Todos')">Todos</button>
+  <button onclick="filtrarCategoria('Ron')">Ron</button>
+  <button onclick="filtrarCategoria('Whisky')">Whisky</button>
+  <button onclick="filtrarCategoria('Vodka')">Vodka</button>
+  <button onclick="filtrarCategoria('Aguardiente')">Aguardiente</button>
+  <button onclick="filtrarCategoria('Tequila')">Tequila</button>
+</div>
+  <input type="text" id="buscador" placeholder="Buscar productos..." onkeyup="filtrarProductos()">
+  <div class="producto Ron">
+    <img src="ron medellin.png" alt="Ron Medellín">
+    <h2>Ron Medellín 750ml</h2>
+    <p>Precio: $50.000</p>
+    <button onclick="abrirModal('ron medellin.png','Ron Medellín 750ml',50000,'El Ron Medellín Añejo 3 años es un licor de excelente calidad, buen cuerpo e intenso aroma a madera y vainilla. Tiene toques ligeramente suaves que lo hacen poseedor de un delicioso sabor. Es un ron de corte moderno, aromático y ligeramente frutal. Es seco, fino y elegante.')">Ver detalle</button>
+    <button onclick="agregarAlCarrito('Ron Medellín 750ml', 50000)">Añadir al carrito</button>
+  </div>
+  <div class="producto Aguardiente">
+    <img src="Aguardiente antioqueño.jpeg" alt="Aguardiente Antioqueño">
+    <h2>Aguardiente Antioqueño 750ml</h2>
+    <p>Precio: $45.000</p>
+    <button onclick="abrirModal('Aguardiente antioqueño.jpeg','Aguardiente Antioqueño 750ml',45000,'Es un aguardiente único, con carácter y brillo, tiene un sabor delicado y suave. Es dulce y cítrico al mismo tiempo, lo que lo convierte en una bebida equilibrada, creada a partir de los mejores anises y del alcohol más puro, perfecto para deleitar el paladar.')">Ver detalle</button>
+    <button onclick="agregarAlCarrito('Aguardiente Antioqueño 750ml', 45000)">Añadir al carrito</button>
+  </div>
+  <div class="producto Whisky">
+    <img src="Whisky JWB.jpg" alt="Whisky Johnnie Walker Black">
+    <h2>Whisky Johnnie Walker Black Label 750ml</h2>
+    <p>Precio: $120.000</p>
+    <button onclick="abrirModal('Whisky JWB.jpg','Whisky Johnnie Walker Black Label 750ml',120000,'Johnnie Walker Black Label es un whisky escocés de mezcla, rico y suave, elaborado exclusivamente con whiskies de malta pura y de grano. Permanece 12 años en barrica, adquiriendo un cuerpo vibrante y sabroso. El resultado son profundas capas de fruta dulce, especias y vainilla, todo envuelto en un manto de humo.')">Ver detalle</button>
+    <button onclick="agregarAlCarrito('Whisky Johnnie Walker Black Label 750ml', 120000)">Añadir al carrito</button>
+  </div>
+  <div class="producto Tequila">
+    <img src="Tequila Jose Cuervo.jpg" alt="Tequila Jose Cuervo">
+    <h2>Tequila Jose Cuervo Especial 750ml</h2>
+    <p>Precio: $90.000</p>
+    <button onclick="abrirModal('Tequila Jose Cuervo.jpg','Tequila Jose Cuervo Especial 750ml',90000,'Un líquido bien estructurado con notas centrales de agave y una intensidad cálida, así como una suavidad extraordinaria, tanto dulce como refrescante.')">Ver detalle</button>
+    <button onclick="agregarAlCarrito('Tequila Jose Cuervo Especial 750ml', 90000)">Añadir al carrito</button>
+  </div>
+  <button id="btnCarrito" onclick="window.location.href='carrito.html'">🛒<span id="numCarrito">0</span></button>
+</main>
+
+<footer>
+  <div class="social">
+    <a href="https://facebook.com/cristhiancamilo.caicedorangel" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/cristhiancamilo.caicedorangel" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/573143603309" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  &copy; 2025 3C SPIRIT. Todos los derechos reservados. Colombia.
+</footer>
+  <script src="script.js"></script>
+<!-- Partículas -->
+<div id="particles-js"></div>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS('particles-js',
+  {
+    "particles": {
+      "number": {
+        "value": 50
+      },
+      "color": {
+        "value": "#00aaff"
+      },
+      "shape": {
+        "type": "circle"
+      },
+      "opacity": {
+        "value": 0.4
+      },
+      "size": {
+        "value": 3
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#00aaff",
+        "opacity": 0.3,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 2
+      }
+    }
+  }
+);
+</script>
+
+<div id="modalProducto" class="modal">
+  <div class="modal-content">
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+    <img id="modalImg" src="" alt="" class="modal-img">
+    <h2 id="modalNombre"></h2>
+    <p id="modalPrecio"></p>
+    <p id="modalDescripcion"></p>
+    <button id="modalBtn" onclick="">Añadir al carrito</button>
+  </div>
+</div>
+
+</body>
+</html>

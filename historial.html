@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de pedidos - 3C SPIRIT</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+        <li><a href="historial.html">Historial de compras</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<h1>Historial de pedidos</h1>
+<div id="lista-pedidos"></div>
+<script>
+const contenedor = document.getElementById('lista-pedidos');
+const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+if (pedidos.length === 0) {
+  contenedor.innerHTML = "<p>No hay pedidos guardados.</p>";
+} else {
+  let html = '';
+  pedidos.forEach((p, i) => {
+    html += `<div style="border:1px solid #ccc; margin:0.5rem; padding:0.5rem;">
+      <strong>Pedido ${i+1}</strong> - Fecha: ${p.fecha}<br>
+      Dirección: ${p.direccion}<br>
+      Correo: ${p.correo}<br>
+      Método pago: ${p.metodoPago}<br>
+      Productos:
+      <ul>${p.carrito.map(item=>`<li>${item.nombre} x${item.cantidad}</li>`).join('')}</ul>
+    </div>`;
+  });
+  contenedor.innerHTML = html;
+}
+
+function exportarHistorialExcel() {
+  const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+  if (pedidos.length === 0) {
+    alert("No hay pedidos para exportar.");
+    return;
+  }
+
+  // Convertimos pedidos en un array de objetos planos
+  let data = [];
+  pedidos.forEach((p, index) => {
+    p.carrito.forEach(item => {
+      data.push({
+        Pedido: index+1,
+        Fecha: p.fecha,
+        Direccion: p.direccion,
+        Correo: p.correo,
+        MetodoPago: p.metodoPago,
+        Producto: item.nombre,
+        Cantidad: item.cantidad,
+        PrecioUnitario: item.precio,
+        Subtotal: item.precio * item.cantidad
+      });
+    });
+  });
+
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Historial");
+
+  XLSX.writeFile(workbook, 'historial_pedidos.xlsx');
+}
+
+</script>
+
+<button onclick="exportarHistorialExcel()">📊 Exportar a Excel</button>
+
+</body>
+</html>
